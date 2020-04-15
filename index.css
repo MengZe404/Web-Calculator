@@ -155,7 +155,7 @@ h1 {
 @media only screen and (max-width: 1000px) {
   .navbar {
     bottom: 0;
-    width: 80px;
+    width: 70px;
     height: 4.5rem;
     margin: 0;
     padding: 0;
