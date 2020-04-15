@@ -6,6 +6,7 @@
     --screenfont: white;
     --navbg: #1f1f1f;
     --navfont: #ffffff;
+    --resultbg: #141418;
     --text-primary: #b6b6b6;
     --text-secondary: #ececec;
     --bg-primary: #23232e;
@@ -296,6 +297,7 @@ transform: rotate(-180deg);
     text-align: right;
     overflow: auto;
     z-index: 1;
+    background-color: var(--resultbg);
 }
 
 @media only screen and (max-width: 1000px) {
@@ -319,6 +321,7 @@ transform: rotate(-180deg);
     --bg-secondary: #141418;
     --background-color: #2C2F33;;
     --text-color: #ffffff;
+    --resultbg: black
   }
   
 .light {
@@ -329,6 +332,7 @@ transform: rotate(-180deg);
     --background-color: linear-gradient(to right, #ffc0cb,#afeeee);
     background: linear-gradient(to right, #ffc0cb,#afeeee);
     --text-color: #141418;
+    --resultbg:#ffffff; 
 }
   
   /* Icons for each theme */
