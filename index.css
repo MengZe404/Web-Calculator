@@ -257,11 +257,6 @@ h1 {
   width: 100%;
 }
 
-/* Animtation for arror*/
-.navbar:hover .logo svg {
-transform: rotate(-180deg);
-}
-
 /* Position of the calculator */
 .cal-container {
     display: flex;
@@ -298,6 +293,7 @@ transform: rotate(-180deg);
     overflow: auto;
     z-index: 1;
     background-color: var(--resultbg);
+    color: white;
 }
 
 @media only screen and (max-width: 1000px) {
