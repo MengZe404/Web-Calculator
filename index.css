@@ -1,0 +1,349 @@
+/* Some root properties */
+:root {
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    --screenbg: black;
+    --screenfont: white;
+    --navbg: #1f1f1f;
+    --navfont: #ffffff;
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+    --background-color: #141418;
+    --text-color: #ececec;
+    --icon-color-primary: #ff7eee;
+    --icon-color-secondary: #df49a6;
+}
+
+/* Scrollbar style (changeable) */
+body::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem;
+}
+  
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+  
+body::-webkit-scrollbar-thumb {
+    background: blueviolet;
+}
+  
+
+/* Basic style for the page */
+body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+  }
+
+h1 {
+    text-align: center;
+    color: var(--mainfont);
+    margin-top: 3vh;
+    font-size: 38px;
+}
+
+/* svg icons themes and animations */
+.fa-primary {
+    color: var(--icon-color-primary)
+}
+
+.fa-secondary {
+    color: var(--icon-color-secondary)
+}
+
+.fa-primary,
+.fa-secondary {
+    transition: var(--transition-speed);
+}
+
+.navbar {
+  position: fixed;
+  background-color: var(--bg-primary);
+  /* animation */
+  transition: width 600ms ease; 
+  overflow: hidden;
+}
+
+/* flex container */
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+/* For theme selector to be at the bottom */
+.nav-item:last-child {
+  margin-top: auto;
+}
+
+/* Link container including one svg and one text */
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  filter: grayscale(95%) opacity(1);
+  transition: var(--transition-speed);
+}
+
+/* Animation when clicking or hovering the link */
+/* For a nicer looking (changeable) */
+.nav-link:hover, :focus {
+  filter: grayscale(0%) opacity(1);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.nav-link-onload {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--transition-speed);
+  background: initial;
+  color: var(--text-secondary);
+}
+
+.nav-link-onload svg {
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 1.55rem;
+  filter: grayscale(0%) opacity(1);
+}
+
+.link-text {
+  display: none;
+  margin-left: 1rem;
+}
+
+.nav-link svg {
+  width: 2rem;
+  min-width: 2rem;
+  margin: 0 1.55rem;
+}
+
+
+.logo svg {
+  transform: rotate(0deg);
+  transition: var(--transition-speed);
+}
+
+.logo-text {
+  display: inline;
+  position: absolute;
+  left: -999px;
+  transition: var(--transition-speed);
+}
+
+/* Small screens */
+@media only screen and (max-width: 1000px) {
+  .navbar {
+    bottom: 0;
+    width: 80px;
+    height: 5rem;
+  }
+
+  .navbar:hover{
+    width: 100vw;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+    width: 16.5vw;
+    height: 5rem;
+  }
+
+  .nav-link {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .nav-link-onload {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .link-text {
+    display: inline;
+    font-size: 10px;
+    transform: translateX(-0.48rem);
+  }
+
+    /* Just an arrow which can flip around (for now) */
+  .logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--background-color);
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  main {
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+/* Large screens */
+@media only screen and (min-width: 1000px) {
+  .navbar {
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+  }
+
+  .nav-link:hover svg {
+    width: 2.5rem;
+  }
+
+  .navbar:hover {
+    width: 16rem;
+  }
+
+  .navbar:hover .link-text {
+    display: inline;
+  }
+
+  .navbar:hover .logo svg
+  {
+    display: none;
+  }
+
+  .navbar:hover .logo-text
+  {
+    left: 0px;
+  }
+}
+
+/* Just an arrow which can flip around (for now) */
+.logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  font-size: 1.5rem;
+  letter-spacing: 0.3ch;
+  width: 100%;
+}
+
+/* Animtation for arror*/
+.navbar:hover .logo svg {
+transform: rotate(-180deg);
+}
+
+/* Position of the calculator */
+.cal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+/* Input + Display screen */
+.display {
+    width: 40vw;
+    height: 10vh;
+    box-sizing: border-box;
+    padding: 0px 15px;
+    text-align: right;
+    font-size: 38px;
+    font-weight: bolder;
+    background-color: var(--screenbg);
+    color: var(--screenfont);
+    border: 3px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Output textarea */
+.result {
+    margin-top: 12px;
+    padding: 0px 15px;
+    width: 55vw;
+    height: 60vh;
+    border: 2px solid black;
+    font-size: 25px;
+    border-radius: 10px;
+    text-align: right;
+    overflow: auto;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 1000px) {
+    .display {
+        width: 80vw;
+        font-size: 28px;
+    }
+
+    .result {
+        width: 80vw;
+        font-size: 20px;
+    }
+}
+
+/* Themes ! */
+.dark {
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --background-color: #2C2F33;;
+    --text-color: #ffffff;
+  }
+  
+.light {
+    --text-primary: #1f1f1f;
+    --text-secondary: #000000;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --background-color: linear-gradient(to right, #ffc0cb,#afeeee);
+    background: linear-gradient(to right, #ffc0cb,#afeeee);
+    --text-color: #141418;
+}
+  
+  /* Icons for each theme */
+.theme-icon {
+    display: none;
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.55rem;
+}
+  
+.dark #darkIcon {
+    display: block;
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.55rem;
+}
+  
+.light #lightIcon {
+    display: block;
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 1.55rem;
+}
