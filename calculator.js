@@ -45,7 +45,7 @@ function calculate() {
 
     checkInput:
     for(let i = 0; i < array.length; i++) {
-        if(array[i].match(letters) && array[i].indexOf('x') == -1) {
+        if(array[i].match(letters)) {
             userOperator = array[i];
             switch(userOperator) {
                 case 'plus':
