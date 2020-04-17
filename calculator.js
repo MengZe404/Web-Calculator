@@ -20,6 +20,7 @@ input.addEventListener("keyup", function(event){
     if(event.keyCode === 13) {
         window.expression = input.value;
         calculate();
+        history();
     }
 })
 
@@ -44,9 +45,23 @@ function calculate() {
 
 // Everytime the user refresh the page, reset the input box and output history.
 function reset() {
-    input.value = '';
+     input.value = '';
     output.value = '';
     mode = modeSelector.value = 'standard';
+}
+
+// History of output
+
+let length = localStorage.getItem("OpenRevise2_calHistory").length;
+if(length > 100) localStorage.clear("OpenRevise2_calHistory");
+
+let userHistory = document.getElementById('history');
+userHistory.addEventListener('click', function(){
+    output.value = "History:  \n" + localStorage.getItem("OpenRevise2_calHistory");
+})
+
+function history() {
+    localStorage.setItem("OpenRevise2_calHistory", output.value);
 }
 
 
