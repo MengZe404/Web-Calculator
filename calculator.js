@@ -3,11 +3,14 @@
 let input = document.getElementById('input');
 let output = document.getElementById('output');
 
+// Mode selector with <select> and <option> elements.
 let modeSelector = document.getElementById('selector');
 let mode = 'standard';
 
+// When there is a change in select value, the mode changes too.
 modeSelector.addEventListener('change', userMode);
 
+// Assign the selected value to mode
 function userMode() {
     mode = modeSelector.value;
 }
@@ -25,7 +28,7 @@ let result = '';
 function calculate() {
     input.value = ''; // Everytime the user click 'Enter', the value in <input> reset
     let expression = window.expression;
-
+    // Use different mathemtical methods for each mode
     if(mode == 'standard') {
         result = math.evaluate(expression);
     } else if(mode == 'algebra'){
@@ -39,10 +42,11 @@ function calculate() {
     output.value += ('Input:  ' + expression + '\n' + result + '\n' + '\n'); 
 }
 
-
+// Everytime the user refresh the page, reset the input box and output history.
 function reset() {
     input.value = '';
     output.value = '';
+    mode = modeSelector.value = 'standard';
 }
 
 
