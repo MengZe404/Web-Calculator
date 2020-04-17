@@ -45,7 +45,7 @@ function calculate() {
 
 // Everytime the user refresh the page, reset the input box and output history.
 function reset() {
-     input.value = '';
+    input.value = '';
     output.value = '';
     mode = modeSelector.value = 'standard';
 }
