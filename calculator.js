@@ -90,6 +90,167 @@ function calculate() {
                     array.splice(i, 1, operator[position]);
                     position++;
                     break;
+                case 'one':
+                    operator.push('1');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'two':
+                    operator.push('2');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'three':
+                    operator.push('3');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'four':
+                    operator.push('4');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'five':
+                    operator.push('5');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'six':
+                    operator.push('6');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'seven':
+                    operator.push('7');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'eight':
+                    operator.push('8');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'nine':
+                    operator.push('9');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'ten':
+                    operator.push('10');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'eleven':
+                    operator.push('11');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'twelve':
+                    operator.push('12');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'thirteen':
+                    operator.push('13');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'forteen':
+                    operator.push('14');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'fifteen':
+                    operator.push('15');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'sixteen':
+                    operator.push('16');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'seventeen':
+                    operator.push('17');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'eighteen':
+                    operator.push('18');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'nineteen':
+                    operator.push('19');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'twenty':
+                    operator.push('20');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'thirty':
+                    operator.push('30');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'forty':
+                    operator.push('40');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'fifty':
+                    operator.push('50');
+                    array.splice(i,1, operator[position]);
+                    position++;
+                    break;
+                case 'sixty':
+                    operator.push('60');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'seventy':
+                    operator.push('70');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'eighty':
+                    operator.push('80');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'ninety':
+                    operator.push('90');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'hundred':
+                    operator.push('00');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'thousand':
+                    operator.push('000');
+                    array.splice(i,1, operator[position]);
+                    position++;
+                    break;
+                case 'million':
+                    operator.push('000000');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'billion':
+                    operator.push('00000000');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                case 'percent':
+                    operator.push('%');
+                    array.splice(i, 1, operator[position]);
+                    position++;
+                    break;
+                        
                 default:
                     operator.push(userOperator);
                     array.splice(i, 1, operator[position]);
