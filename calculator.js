@@ -19,7 +19,7 @@ function userMode() {
 // When the user click 'Enter' key, assign the value in <input> to a new variable expression
 input.addEventListener("keyup", function(event){
     if(event.keyCode === 13) {
-        if(mode != 'algebra' && x == '') { 
+        if(mode == 'standard' || mode == 'calculus') { 
             window.expression = input.value;
             calculate();
             history();
@@ -32,7 +32,7 @@ input.addEventListener("keyup", function(event){
             })
             calculate();
             history();
-        }
+        } 
     }
 })
 
