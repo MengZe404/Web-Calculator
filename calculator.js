@@ -225,26 +225,6 @@ function calculate() {
                     array.splice(i, 1, operator[position]);
                     position++;
                     break;
-                case 'hundred':
-                    operator.push('00');
-                    array.splice(i, 1, operator[position]);
-                    position++;
-                    break;
-                case 'thousand':
-                    operator.push('000');
-                    array.splice(i,1, operator[position]);
-                    position++;
-                    break;
-                case 'million':
-                    operator.push('000000');
-                    array.splice(i, 1, operator[position]);
-                    position++;
-                    break;
-                case 'billion':
-                    operator.push('00000000');
-                    array.splice(i, 1, operator[position]);
-                    position++;
-                    break;
                 case 'percent':
                     operator.push('%');
                     array.splice(i, 1, operator[position]);
