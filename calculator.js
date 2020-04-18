@@ -54,21 +54,6 @@ function calculate() {
 
     let position = 0;
 
-    // Function identifier (e.g f(x), g(x)).
-    let userFunc = array[0];
-
-    switch(userFunc) {
-        case 'f(x)':
-            funcOp = 'f(';
-            break;
-        case 'g(x)':
-            funcOp = 'g(';
-            break;
-        case 'h(x)':
-            funcOp = 'h('
-            break;
-    }
-
     for(let i = 0; i < array.length; i++) {
         if(array[i].match(letters)) {
             userOperator = array[i];
@@ -111,6 +96,22 @@ function calculate() {
             }
         }
     }
+
+    // Function identifier (e.g f(x), g(x)).
+    let userFunc = array[0];
+
+    switch(userFunc) {
+        case 'f(x)':
+            funcOp = 'f(';
+            break;
+        case 'g(x)':
+            funcOp = 'g(';
+            break;
+        case 'h(x)':
+            funcOp = 'h('
+            break;
+    }
+    
     expression = (array.join(' '));
     // Use different mathemtical methods for each mode
     if(mode == 'standard') {
