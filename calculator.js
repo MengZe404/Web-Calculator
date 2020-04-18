@@ -111,7 +111,7 @@ function calculate() {
             funcOp = 'h('
             break;
     }
-    
+
     expression = (array.join(' '));
     // Use different mathemtical methods for each mode
     if(mode == 'standard') {
@@ -120,6 +120,7 @@ function calculate() {
         result = compiled.evaluate();
         output.value += ('Input:  ' + expression + '\n' + result + '\n' + '\n'); 
     } else if(mode == 'algebra'){
+        // Hey! This is  what i have been working on for 2 hours!!!!! :( 
         input.value = 'x = ';
         parser.evaluate(expression);
         result = parser.evaluate(funcOp + x + ')'); // example: f(2) if x = 2.
