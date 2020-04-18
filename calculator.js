@@ -14,6 +14,7 @@ modeSelector.addEventListener('change', userMode);
 // Assign the selected value to mode
 function userMode() {
     mode = modeSelector.value;
+    input.value = '';
 }
 
 // When the user click 'Enter' key, assign the value in <input> to a new variable expression
