@@ -2,7 +2,7 @@
 // Get element <input> and <textarea> (output)
 let input = document.getElementById('input');
 let output = document.getElementById('output');
-
+const parser = math.parser()
 
 // Mode selector with <select> and <option> elements.
 let modeSelector = document.getElementById('selector');
@@ -19,16 +19,27 @@ function userMode() {
 // When the user click 'Enter' key, assign the value in <input> to a new variable expression
 input.addEventListener("keyup", function(event){
     if(event.keyCode === 13) {
-        window.expression = input.value;
-        calculate();
-        history();
+        if(mode != 'algebra' && x == '') { 
+            window.expression = input.value;
+            calculate();
+            history();
+        } else{
+            window.expression = input.value;
+            output.value += ('Function:  ' + expression + '\n');
+            input.value = 'x = ';
+            input.addEventListener("keyup", function(event){
+                if(event.key) x = parser.evaluate(input.value);
+            })
+            calculate();
+            history();
+        }
     }
 })
 
+// Calculator Core
 let result = '';
-
+let x = '';
 function calculate() {
-    input.value = ''; // Everytime the user click 'Enter', the value in <input> reset
     let expression = window.expression;
 
     // Nature Typing Identifier
@@ -37,84 +48,88 @@ function calculate() {
 
     let userOperator = '';
 
-    let operator = []
+    let operator = [];
 
     let array = expression.split(' ');
 
     let position = 0;
 
-    checkInput:
+    // Function identifier (e.g f(x), g(x)).
+    let userFunc = array[0];
+
+    switch(userFunc) {
+        case 'f(x)':
+            funcOp = 'f(';
+            break;
+        case 'g(x)':
+            funcOp = 'g(';
+            break;
+        case 'h(x)':
+            funcOp = 'h('
+            break;
+    }
+
     for(let i = 0; i < array.length; i++) {
         if(array[i].match(letters)) {
             userOperator = array[i];
             switch(userOperator) {
                 case 'plus':
-                    operator.push('+');
-                    array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
                 case 'add':
                     operator.push('+');
                     array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
+                    position++;
+                    break;
                 case 'minus':
-                    operator.push('-');
-                    array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
                 case 'subtract':
                     operator.push('-');
                     array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
+                    position++;
+                    break;
                 case 'times':
-                    operator.push('*');
-                    array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
                 case 'multiply':
                     operator.push('*');
                     array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
+                    position++;
+                    break;
                 case 'divide':
-                    operator.push('/');
-                    array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
                 case 'over':
                     operator.push('/');
                     array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
+                    position++;
+                    break;
                 case 'power':
-                    operator.push('^');
-                    array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
                 case 'caret':
+                case 'to the power of':
                     operator.push('^');
                     array.splice(i, 1, operator[position]);
-                    position++
-                    continue checkInput;
+                    position++;
+                    break;
+                default:
+                    operator.push(userOperator);
+                    array.splice(i, 1, operator[position]);
+                    position++;
             }
         }
     }
-
     expression = (array.join(' '));
     // Use different mathemtical methods for each mode
     if(mode == 'standard') {
-        result = math.evaluate(expression);
+        input.value = ''; // Everytime the user click 'Enter', the value in <input> reset
+        let compiled = math.compile(expression);
+        result = compiled.evaluate();
+        output.value += ('Input:  ' + expression + '\n' + result + '\n' + '\n'); 
     } else if(mode == 'algebra'){
-        result = math.simplify(expression).toString();
+        input.value = 'x = ';
+        parser.evaluate(expression);
+        result = parser.evaluate(funcOp + x + ')'); // example: f(2) if x = 2.
+        output.value += ( 'Result:  ' + result + '\n' + '\n');
     } else {
+        input.value = ''; // Everytime the user click 'Enter', the value in <input> reset
         result = math.derivative(expression, 'x').toString();
+        output.value += ('Input:  ' + expression + '\n' + result + '\n' + '\n'); 
     }
 
     if(result == undefined) result = "no answer";
-    
-    output.value += ('Input:  ' + expression + '\n' + result + '\n' + '\n'); 
 }
 
 // Everytime the user refresh the page, reset the input box and output history.
