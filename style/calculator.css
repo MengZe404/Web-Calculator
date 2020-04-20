@@ -1,0 +1,18 @@
+/* Position of the calculator */
+.calculator-container {
+  margin-top: 15px;
+  width: inherit;
+}
+
+.calculator-input {
+  padding: 0px 10px;
+  text-align: right;
+  font-weight: bolder;
+}
+
+.calculator-result {
+  margin-top: 12px;
+  padding: 0px 10px;
+  text-align: right;
+  overflow: auto;
+}

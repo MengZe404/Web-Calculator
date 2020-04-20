@@ -1,28 +1,280 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Web Calculator</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.css" />
-  <!-- A JS library which can handle all maths expressions -->
-  <script defer src="math.js"></script>
-  <script defer src="calculator.js" type="text/javascript"></script>
-</head>
-<body onload="reset()">
-  <!-- Main content -->
-  <select id='selector'>
-    <option value="standard" selected> Standard </option>
-    <option value="algebra"> Algebra </option>
-    <option value="calculus"> Calculus </option>
-  </select>
-  <button id='history'> History </button>
-  <h1> Web Calculator </h1>
-  <div class="cal-container">
-    <!-- The screen display of calculator -->
-    <input placeholder="Input" id="input" class="display">
-    <!-- The results of the calculation will be displayed here -->
-    <textarea readonly placeholder="output" id="output" class="result"></textarea>
-  </div>
-</body>
-</html>
+<htmL>
+  <head>
+    <title> Web Calculator 2.0 </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='style/animate/animate.css'>
+    <link rel="stylesheet" href='style/calculator.css'>
+    <link rel="stylesheet" href='style/bulma.min.css'>
+    <link rel="stylesheet" href='style/bulmaswatch-slate.min.css'>
+    <script src='script/all.min.js'></script>
+    <script src='script/jquery-3.5.0.js'></script>
+  </head>
+  <body>
+    <section class='section'>
+      <h1 class="title is-3 has-text-centered is-unselectable">Web Calculator</h1>
+      <div class="container">
+        <div class="tabs is-centered is-hidden-mobile">
+          <ul>
+            <li id='calculator-type-tabs-standard' class="is-active">
+              <a>
+                <span class="icon is-small"><i class="fas fa-plus"></i></span>
+                <span>Standard</span>
+              </a>
+            </li>
+            <li id='calculator-type-tabs-algebra'>
+              <a>
+                <span class="icon is-small"><i class="fas fa-percentage"></i></span>
+                <span>Algebra</span>
+              </a>
+            </li>
+            <li id='calculator-type-tabs-calculus'>
+              <a>
+                <span class="icon is-small"><i class="fas fa-square-root-alt"></i></span>
+                <span>Calculus</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="field is-grouped is-grouped-centered">
+        <div class="control has-icons-left is-hidden-tablet">
+          <div class="icon is-small is-left">
+            <i id='calculator-type-select-icons' class="fas fa-plus"></i>
+          </div>
+          <div class="select">
+            <select id='calculator-type-select'>
+              <option value='standard'>Standard</option>
+              <option value='algebra'>Algebra</option>
+              <option value='calculus'>Calculus</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class='container calculator-container'>
+        <div class="field has-addons">
+          <div class="control">
+            <button id='calculator-buttons-restorehistory' class="button is-warning" title='Load history'>
+              <span class="icon is-small">
+                <i class="fas fa-history"></i>
+              </span>
+            </button>
+          </div>
+          <div class="control is-expanded">
+            <input class="input is-fullwidth calculator-input" type="text" placeholder="Input an expression...">
+          </div>
+          <div class="control">
+            <button id='calculator-buttons-calculate' class="button" title='Calculate expression'>
+              <span class="icon is-small">
+                <i class="fas fa-equals"></i>
+              </span>
+            </button>
+          </div>
+          <div class="control">
+            <button id='calculator-buttons-clearoutput' class="button is-danger" title='Clear output'>
+              <span class="icon is-small">
+                <i class="fas fa-backspace"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control is-expanded">
+            <textarea style="resize: none; height: 50vh; background-color: rgb(32, 31, 31); font-size: 18px;"class="textarea is-fullwidth calculator-result" placeholder="Output" readonly></textarea>
+          </div>
+        </div>
+        <div class='buttons has-addons is-centered'>
+          <button id='calculator-buttons-about' class="button" title='About'>
+            <span class="icon is-small is-unselectable">
+              <i class="fas fa-info"></i>
+            </span>
+          </button>
+          <button id='calculator-buttons-tutorial' class="button is-info" title='Open tutorial'>
+            <span class="icon is-small is-unselectable">
+              <i class="fas fa-question"></i>
+            </span>
+          </button>
+          <button id='calculator-buttons-github' class="button" title='GitHub'>
+            <span class="icon is-small is-unselectable">
+              <i class="fab fa-github"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <div id='calculator-modal-warnrestorehistory' class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Restore History></p>
+        </header>
+        <section class="modal-card-body">
+          <strong>
+            This will erase the current output and display your calculation history. 
+            <br>
+            <br>
+            Proceed?
+          </strong>
+        </section>
+        <footer class="modal-card-foot">
+          <button id='calculator-modal-warnrestorehistory-button-yes' class="button is-danger">Yes</button>
+          <button class='button' id='calculator-modal-warnrestorehistory-button-cancel'>Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <div id='calculator-modal-about' class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">About Web Calculator</p>
+        </header>
+        <section class="modal-card-body">
+          <p>
+            version 0.4-alpha
+            <br>
+            <br>
+            This is a Web Calculator with some cool features!
+            <br>
+            <br>
+            © openMengZe [MengZe] and jkelol111 [Nam] 2020-present
+          </p>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id='calculator-modal-aboutClose'>Thanks!</button>
+        </footer>
+      </div>
+    </div>
+    <div id='calculator-modal-tutorial' class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Tutorial</p>
+        </header>
+        <section class="modal-card-body">
+          <article class='is-unselectable'>
+            <h1 class='title is-4'>Features</h1>
+            <h2 class='subtitle'>What can you use?</h2>
+            <div class='container content'>
+              <ul>
+                <li>Mode selector: Standard (default), Algebra & Calculus.</li>
+                <li>Input box: input the mathematical expression you want the calculator to evaluate.</li>
+                <li>Output box: display your input expression & result.</li>
+              </ul>
+            </div>
+            <h1 class='title is-4'>Calculator modes</h1>
+            <h2 class='subtitle'>The calculator modes in detail.</h2>
+            <div class='container content'>
+              <h5>Standard: basic mathematical evaluations.</h5>
+              <ul>
+                <li>Arithmetic calculations (+,-,*,^,/,%, sqrt)</li>
+                <li>
+                  Advanced calculations:
+                  <ul>
+                    <li><code>log(a,b)</code>: returns <code>n</code> where <code>b^n = a</code>.</li>
+                    <li>trigonometry <code>[sin(),cos(),tan(),sec(),csc(), cot()]</code></li>
+                  </ul>
+                </li>
+                <li>Unit converter (e.g <code>10km/hour to m/s</code>)</li>
+              </ul>
+              <h5>Algebra: mathematical calculations involving functions.</h5>
+              <ol>
+                <li>Define function (e.g <code>f(x) = 10x</code>) [case sensitive!]</li>
+                <li>Input <code>x</code> and get result</li>
+                <li>Move on to the next function, define <code>g(x)</code> or <code>h(x)</code> if <code>f(x)</code> is used.</li>
+              </ol>
+              <h5>Calculus: mathematical calculations involving differentiation.</h5>
+              <p>
+                Input  --> <code>5x^2 + 10x - 5</code>
+                <br>
+                Output <-- <code>10x + 10</code>
+              </p>
+            </div>
+          </section>
+        </article>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id='calculator-modal-tutorialClose'>Thanks!</button>
+        </footer>
+      </div>
+    </div>
+    <div id='calculator-modal-warndeleteoutput' class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Delete output?</p>
+        </header>
+        <section class="modal-card-body">
+          <strong>
+            This will erase the current output. 
+            <br>
+            <br>
+            Proceed?
+          </strong>
+        </section>
+        <footer class="modal-card-foot">
+          <button id='calculator-modal-warndeleteoutput-button-delete' class="button is-danger">Delete</button>
+          <button class='button' id='calculator-modal-warndeleteoutput-button-cancel'>Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <div id='calculator-modal-warnrestorehistory' class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Restore history?</p>
+        </header>
+        <section class="modal-card-body">
+          <strong>
+            This will erase the current output and restore the history (if available).
+            <br>
+            <br>
+            Proceed?
+          </strong>
+        </section>
+        <footer class="modal-card-foot">
+          <button id='calculator-modal-warnrestorehistory-button-restore' class="button is-danger">Delete & restore</button>
+          <button class='button' data-bulma-modal='close'>Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <div id='calculator-modal-wrongMode' class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Wrong Mode</p>
+        </header>
+        <section class="modal-card-body">
+          <strong>
+            For function evaluation, please select 'Algebra' mode.
+            <br>
+          </strong>
+        </section>
+        <footer class="modal-card-foot"></footer>
+          <button id='calculator-modal-wrongMode-ok' class="button is-success"> Ok </button>
+        </footer>
+      </div>
+    </div>
+    <div id='calculator-modal-wrongFormat' class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Wrong Format</p>
+        </header>
+        <section class="modal-card-body">
+          <strong>
+            Your input format is incorrect. Please read the tutorial.
+            <br>
+          </strong>
+        </section>
+        <footer class="modal-card-foot"></footer>
+          <button id='calculator-modal-wrongFormat-ok' class="button is-success"> Ok </button>
+        </footer>
+      </div>
+    </div>
+  </body>
+  <script src="script/compromised.min.js"></script>
+  <script src="script/compromised-numbers.min.js"></script>
+  <script src="script/math.min.js"></script>
+  <script src='script/animate.js'></script>
+  <script src='script/bulma-modal.js'></script>
+  <script src="script/calculator.js"></script>  
+</htmL>
