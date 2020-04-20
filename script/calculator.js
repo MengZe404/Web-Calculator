@@ -210,9 +210,10 @@
     $('.calculator-input').val('')
   })
   // History of output
-
-  let historyLength = localStorage.getItem("calHistory").length;
-  if(historyLength > 100) localStorage.clear("calHistory");
+  if(localStorage.getItem("calHistory") != null) {
+    let historyLength = localStorage.getItem("calHistory").length;
+    if(historyLength > 100) localStorage.clear("calHistory");
+  }
 
   function history() {
       localStorage.setItem("calHistory", output.value);
