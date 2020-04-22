@@ -1,5 +1,4 @@
 (function () {
-  'use strict'
   var mode = 'standard'
   var input = document.querySelector('.calculator-input')
   var output = document.querySelector('.calculator-result')
@@ -14,8 +13,8 @@
     tutorial: new BulmaModal('#calculator-modal-tutorial'),
     warnClearOutput: new BulmaModal('#calculator-modal-warndeleteoutput'),
     warnRestoreHistory: new BulmaModal('#calculator-modal-warnrestorehistory'),
-    wrongMode: new BulmaModal('#calculator-modal-wrongMode'),
-    wrongFormat: new BulmaModal('#calculator-modal-wrongFormat')
+    wrongMode: new BulmaModal('#calculator-modal-warnwrongmode'),
+    wrongFormat: new BulmaModal('#calculator-modal-warnwrongformat')
   }
 
   $('#calculator-buttons-calculate').click(function () {
@@ -207,7 +206,7 @@
         mode = 'calculus'
         break
     }
-    $('.calculator-input').val('')
+    input.value = ''
   })
   // History of output
   if(localStorage.getItem("calHistory") != null) {
@@ -225,7 +224,7 @@
     $('#calculator-type-tabs-algebra').removeClass('is-active')
     $('#calculator-type-tabs-calculus').removeClass('is-active')
     mode = 'standard'
-    $('.calculator-input').val('')
+    input.value = ''
   })
 
   $('#calculator-type-tabs-algebra').click(function () {
@@ -233,7 +232,7 @@
     $('#calculator-type-tabs-algebra').addClass('is-active')
     $('#calculator-type-tabs-calculus').removeClass('is-active')
     mode = 'algebra'
-    $('.calculator-input').val('')
+    input.value = ''
   })
 
   $('#calculator-type-tabs-calculus').click(function () {
@@ -241,11 +240,7 @@
     $('#calculator-type-tabs-algebra').removeClass('is-active')
     $('#calculator-type-tabs-calculus').addClass('is-active')
     mode = 'calculus'
-    $('.calculator-input').val('')
-  })
-
-  $('calculator-buttons-restorehistory').click(function () {
-    modals.warnRestoreHistory.show()
+    input.value = ''
   })
 
   $('#calculator-buttons-clearoutput').click(function () {
@@ -272,7 +267,7 @@
   })
 
   $('#calculator-modal-warndeleteoutput-button-delete').click(function () {
-    $('.calculator-result').val('')
+    output.value = ''
     modals.warnClearOutput.close()
   })
 
@@ -286,19 +281,5 @@
 
   $('#calculator-buttons-tutorial').click(function () {
     modals.tutorial.show()
-  })
-
-  $('#calculator-modal-aboutClose').click(function() {
-    modals.about.close()
-  })
-
-  $('#calculator-modal-tutorialClose').click(function() {
-    modals.tutorial.close()
-  })
-  $('#calculator-modal-wrongMode-ok').click(function () {
-    modals.wrongMode.close()
-  })
-  $('#calculator-modal-wrongFormat-ok').click(function () {
-    modals.wrongFormat.close()
   })
 })()

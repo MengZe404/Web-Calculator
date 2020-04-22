@@ -1,14 +1,13 @@
-<htmL>
+<!DOCTYPE html>
+<html>
   <head>
     <title> Web Calculator 2.0 </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href='style/animate/animate.css'>
-    <link rel="stylesheet" href='style/calculator.css'>
-    <link rel="stylesheet" href='style/bulma.min.css'>
+    <link rel="stylesheet" href='style/animate.css'>
     <link rel="stylesheet" href='style/bulmaswatch-slate.min.css'>
+    <link rel="stylesheet" href='style/calculator.css'>
     <script src='script/all.min.js'></script>
-    <script src='script/jquery-3.5.0.js'></script>
   </head>
   <body>
     <section class='section'>
@@ -80,7 +79,7 @@
         </div>
         <div class="field">
           <div class="control is-expanded">
-            <textarea style="resize: none; height: 50vh; background-color: rgb(32, 31, 31); font-size: 18px;"class="textarea is-fullwidth calculator-result" placeholder="Output" readonly></textarea>
+            <textarea class="textarea is-fullwidth calculator-result" placeholder="Output" readonly></textarea>
           </div>
         </div>
         <div class='buttons has-addons is-centered'>
@@ -106,7 +105,7 @@
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title">Restore History></p>
+          <p class="modal-card-title">Restore History</p>
         </header>
         <section class="modal-card-body">
           <strong>
@@ -118,7 +117,7 @@
         </section>
         <footer class="modal-card-foot">
           <button id='calculator-modal-warnrestorehistory-button-yes' class="button is-danger">Yes</button>
-          <button class='button' id='calculator-modal-warnrestorehistory-button-cancel'>Cancel</button>
+          <button id='calculator-modal-warnrestorehistory-button-cancel' class='button'>Cancel</button>
         </footer>
       </div>
     </div>
@@ -130,7 +129,7 @@
         </header>
         <section class="modal-card-body">
           <p>
-            version 0.4-alpha
+            version 2.0-alpha (based on commit <code>#b9b5760</code> on branch <code>master</code> on repo <code>openMengZe/Web-Calculator</code>)
             <br>
             <br>
             This is a Web Calculator with some cool features!
@@ -140,7 +139,7 @@
           </p>
         </section>
         <footer class="modal-card-foot">
-          <button class="button is-success" id='calculator-modal-aboutClose'>Thanks!</button>
+          <button class="button is-success" data-bulma-modal='close'>Thanks!</button>
         </footer>
       </div>
     </div>
@@ -192,7 +191,7 @@
           </section>
         </article>
         <footer class="modal-card-foot">
-          <button class="button is-success" id='calculator-modal-tutorialClose'>Thanks!</button>
+          <button class="button is-success" data-bulma-modal='close'>Thanks!</button>
         </footer>
       </div>
     </div>
@@ -212,31 +211,11 @@
         </section>
         <footer class="modal-card-foot">
           <button id='calculator-modal-warndeleteoutput-button-delete' class="button is-danger">Delete</button>
-          <button class='button' id='calculator-modal-warndeleteoutput-button-cancel'>Cancel</button>
-        </footer>
-      </div>
-    </div>
-    <div id='calculator-modal-warnrestorehistory' class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Restore history?</p>
-        </header>
-        <section class="modal-card-body">
-          <strong>
-            This will erase the current output and restore the history (if available).
-            <br>
-            <br>
-            Proceed?
-          </strong>
-        </section>
-        <footer class="modal-card-foot">
-          <button id='calculator-modal-warnrestorehistory-button-restore' class="button is-danger">Delete & restore</button>
           <button class='button' data-bulma-modal='close'>Cancel</button>
         </footer>
       </div>
     </div>
-    <div id='calculator-modal-wrongMode' class="modal">
+    <div id='calculator-modal-warnwrongmode' class="modal">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -249,11 +228,11 @@
           </strong>
         </section>
         <footer class="modal-card-foot"></footer>
-          <button id='calculator-modal-wrongMode-ok' class="button is-success"> Ok </button>
+          <button class="button is-success" data-bulma-modal='close'>Alright</button>
         </footer>
       </div>
     </div>
-    <div id='calculator-modal-wrongFormat' class="modal">
+    <div id='calculator-modal-warnwrongformat' class="modal">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -266,15 +245,17 @@
           </strong>
         </section>
         <footer class="modal-card-foot"></footer>
-          <button id='calculator-modal-wrongFormat-ok' class="button is-success"> Ok </button>
+          <button class="button is-success" data-bulma-modal='close'>Alright</button>
         </footer>
       </div>
     </div>
   </body>
-  <script src="script/compromised.min.js"></script>
-  <script src="script/compromised-numbers.min.js"></script>
-  <script src="script/math.min.js"></script>
+  <!-- Disable compromise.js for now because no functionality -->
+  <!-- <script src="script/compromised.min.js"></script>
+  <script src="script/compromised-numbers.min.js"></script> -->
+  <script src='script/jquery-3.5.0.js'></script>
   <script src='script/animate.js'></script>
   <script src='script/bulma-modal.js'></script>
+  <script src="script/math.min.js"></script>
   <script src="script/calculator.js"></script>  
-</htmL>
+</html>
