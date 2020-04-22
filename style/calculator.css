@@ -4,6 +4,11 @@
   width: inherit;
 }
 
+.calculator-input, .calculator-result {
+  background-color: rgb(32, 31, 31);
+  color: #ffffff;
+}
+
 .calculator-input {
   padding: 0px 10px;
   text-align: right;
@@ -15,4 +20,7 @@
   padding: 0px 10px;
   text-align: right;
   overflow: auto;
+  resize: none; 
+  height: 50vh; 
+  font-size: 18px;
 }
