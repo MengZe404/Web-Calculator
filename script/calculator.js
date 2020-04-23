@@ -35,6 +35,8 @@
         case 'calculus':
           if(input.value.includes('f(x)') || func.includes('g(x)') || func.includes('h(x)') ){
             $('#calculator-buttons-calculate').removeClass('is-loading')
+            $('#calculator-buttons-restorehistory').prop('disabled', false)
+            $('#calculator-buttons-clearoutput').prop('disabled', false)
             input.value = ''
             // Nam, change this to modal window please
             modals.wrongMode.show()
@@ -53,6 +55,8 @@
               input.value = 'x = '
             } else {
               $('#calculator-buttons-calculate').removeClass('is-loading')
+              $('#calculator-buttons-restorehistory').prop('disabled', false)
+              $('#calculator-buttons-clearoutput').prop('disabled', false)
               // Replace this shit with a modal window please
                 modals.wrongFormat.show()
                 func = ''
@@ -242,6 +246,26 @@
     mode = 'calculus'
     input.value = ''
   })
+
+  // Remove the new popup button in Popup windows by detecting MASTER_POPUP (defined if master-popup.js is loaded)
+  if (typeof(MASTER_POPUP) == 'undefined') {
+    $('#calculator-buttons-popup').click(() => {
+      $('#calculator-buttons-popup').blur()
+      $('#calculator-buttons-popup').addClass('is-invisible')
+      $('#calculator-overlay-popupopenned').focus()
+      // Fix for skeomorphic themes.
+      setTimeout(() => {
+        $('#calculator-overlay-popupopenned').removeClass('is-hidden')
+        openPopupPage('calculator')
+      }, 110)
+    })
+    $('#calculator-buttons-nopopup').click(() => {
+      $('#calculator-buttons-popup').removeClass('is-invisible')
+      $('#calculator-overlay-popupopenned').addClass('is-hidden')
+    })
+  } else {
+    $('#calculator-buttons-popup').remove()
+  }
 
   $('#calculator-buttons-clearoutput').click(function () {
     modals.warnClearOutput.show()
